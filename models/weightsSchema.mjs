@@ -5,18 +5,19 @@ const cardioSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    sets:{  
+    reps: { 
+        type: Number,
+        required: true
+    },
+    sets: {
         type: Number,
         required: true
     },
     date: {
         type: Date,
-        required: true
-    },
-    calBurned:{
-        type: Number,
+        default: Date.now,
         required: true
     }
 });
 
-export default mongoose.model
+export default mongoose.model("Weights", weightsSchema);

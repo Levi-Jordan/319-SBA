@@ -1,15 +1,23 @@
 import mongoose from 'mongoose';
 
-const cardioSchema = new mongoose.Schema({
+const nutritionSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
     },
-    timeElapsed: { 
+    gramsProtein: { 
         type: Number,
         required: true
     },
-    calBurned:{
+    gramsFat: { 
+        type: Number,
+        required: true
+    },
+    gramsCarb: { 
+        type: Number,
+        required: true
+    },
+    cal:{
         type: Number,
         required: true
     },
@@ -20,4 +28,4 @@ const cardioSchema = new mongoose.Schema({
     }
 });
 
-export default mongoose.model("Cardio", cardioSchema);
+export default mongoose.model("Nutrition", nutritionSchema);
