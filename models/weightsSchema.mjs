@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 const weightsSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        index: true
     },
     reps: { 
         type: Number,
