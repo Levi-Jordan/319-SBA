@@ -19,7 +19,25 @@ connectDB();
 app.use('/api/cardio', cardioRoutes);
 app.use('/api/nutrition', nutritionRoutes);
 app.use('/api/weights', weightsRoutes);
-//Error Handling Middleware
+
+//Seed
+app.get('/cardioSeed', async(req, res) => {
+    await cardioRoutes.deleteMany({});
+    await cardioRoutes.create(allCardio);
+    res.send('Seeded data!');
+});
+
+app.get('/nutritionSeed', async(req, res) => {
+    await nutritionRoutes.deleteMany({});
+    await nutritionRoutes.create(allNutrition);
+    res.send('Seeded data!');
+});
+
+app.get('/weightsSeed', async(req, res) => {
+    await weightsRoutes.deleteMany({});
+    await weightsRoutes.create(allWeights);
+    res.send('Seeded data!');
+});
 
 //Listener
 app.listen(PORT, () => {
