@@ -2,9 +2,15 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './db/conn.mjs';
-import cardioRoutes from './routes/cardioRoutes.mjs'
-import nutritionRoutes from './routes/nutritionRoutes.mjs'
-import weightsRoutes from './routes/weightsRoutes.mjs'
+import cardioRoutes from './routes/cardioRoutes.mjs';
+import nutritionRoutes from './routes/nutritionRoutes.mjs';
+import weightsRoutes from './routes/weightsRoutes.mjs';
+import allCardio from './data/cardioSeedData.mjs';
+import allWeights from './data/weightsSeedData.mjs'
+import allNutrition from './data/nutritionSeedData.mjs';
+import Cardio from './models/cardioSchema.mjs';
+import Weights from './models/weightsSchema.mjs'
+import Nutrition from './models/nutritionSchema.mjs'
 
 //Setups
 dotenv.config();
@@ -21,21 +27,21 @@ app.use('/api/nutrition', nutritionRoutes);
 app.use('/api/weights', weightsRoutes);
 
 //Seed
-app.get('/cardioSeed', async(req, res) => {
-    await cardioRoutes.deleteMany({});
-    await cardioRoutes.create(allCardio);
+app.get('/cardioSeed', async (req, res) => {
+    await Cardio.deleteMany({});
+    await Cardio.create(allCardio);
     res.send('Seeded data!');
 });
 
 app.get('/nutritionSeed', async(req, res) => {
-    await nutritionRoutes.deleteMany({});
-    await nutritionRoutes.create(allNutrition);
+    await Nutrition.deleteMany({});
+    await Nutrition.create(allNutrition);
     res.send('Seeded data!');
 });
 
 app.get('/weightsSeed', async(req, res) => {
-    await weightsRoutes.deleteMany({});
-    await weightsRoutes.create(allWeights);
+    await Weights.deleteMany({});
+    await Weights.create(allWeights);
     res.send('Seeded data!');
 });
 

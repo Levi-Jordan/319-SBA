@@ -16,7 +16,6 @@ const weightsSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        default: Date.now,
         required: true
     }
 });
